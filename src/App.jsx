@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react"
-import WeatherCard from "./components/WeatherCards"
-import WeatherChart from "./components/WeatherChart"
-
+import { useState, useEffect } from "react";
+import WeatherCard from "./components/WeatherCard";
+import WeatherChart from "./components/WeatherChart";
+import './index.css';
 
 function App() {
   const [data, setData] = useState(null)
@@ -17,7 +17,7 @@ function App() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              size: 5000,
+              size: 7000,
               sort: [{ measured: { order: 'desc' } }],
               query: {
                 range: {
@@ -39,16 +39,27 @@ function App() {
 
     fetchData()
   }, [])
-
-  console.log(console.log(data?.[0]._source)
-    )
   
+  if (loading) return <main><p aria-live="polite">Loading weather data...</p></main>
+  if (error) return <main><p role="alert">Something went wrong: {error}</p></main>
+
   return (
-    <div>
+    
+    <main>
       <h1>Troll Weather Station</h1>
-      {data && <WeatherChart data={data} />}
-      {data && <WeatherCard data={data}/>}
-    </div>
+      <p>Latest weather data from Troll Research Station, Antarctica</p>
+      <p className="last-updated">{"Last updated: "}
+        <time dateTime={data[0]._source.measured}>
+          {new Date(data[0]._source.measured).toLocaleString('en', { 
+            day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+          })}
+        </time>
+      </p>
+      <section aria-label="Current weather at Troll Weather Station">
+        <WeatherCard data={data}/>
+        <WeatherChart data={data}/>
+      </section>
+    </main>
   )
 }
 

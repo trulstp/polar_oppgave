@@ -1,16 +1,37 @@
-# React + Vite
+# Troll Weather Station
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web application displaying weather data from Troll Research Station, Antarctica.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Open http://localhost:5173 in your browser.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What is shown
 
-## Expanding the ESLint configuration
+- Current temperature, wind speed, humidity and air pressure
+- Temperature trend chart over the last 4 days
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Data is fetched from the Norsk Polarinstitutt OpenSearch API on page load.
+
+## Libraries
+
+**Recharts** — used for the temperature chart. Chosen because it is built 
+natively for React, has a straightforward API and good documentation. 
+
+## Accessibility
+
+- Semantic HTML elements (main, section, ul/li)
+- aria-labels on all measurements with full readable text
+- Responsive layout using flexbox — works on mobile and desktop
+- Keyboard navigable
+
+## Known limitations and notes
+
+- Data is sampled to reduce chart density — not every measurement is shown
+- No caching — data is refetched on every page load and does not auto update without a page load.
+- The chart is not fully accessible to screen readers
