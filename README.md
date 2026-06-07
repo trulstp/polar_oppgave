@@ -43,7 +43,7 @@ natively for React, has a straightforward API and good documentation.
 | Performance | 39 |
 | Accessibility | 100 |
 | Best Practices | 81 |
-| SEO | 91 |
+| SEO | 100 |
 
 > Note: Performance is low due to unminified Vite dev build and active Chrome extensions.
 > A production build would score significantly higher.
