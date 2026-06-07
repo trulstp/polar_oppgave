@@ -5,6 +5,7 @@ Web application displaying weather data from Troll Research Station, Antarctica.
 ## Getting started
 
 ```bash
+git clone https://github.com/trulstp/polar_oppgave.git
 npm install
 npm run dev
 ```
