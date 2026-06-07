@@ -4,6 +4,8 @@ Web application displaying weather data from Troll Research Station, Antarctica.
 
 ## Getting started
 
+Requires Node.js 20 or 22.
+
 ```bash
 git clone https://github.com/trulstp/polar_oppgave.git
 npm install
